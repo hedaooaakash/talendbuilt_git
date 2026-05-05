@@ -1,0 +1,32 @@
+Breakdown of the Diagram
+Flow Triggers
+
+Checks DMF_FLOW_TRIGGER for pending triggers.
+
+Starts flow execution in its own thread.
+
+File Events
+
+Checks file_evnt_subcr for ready/on‑demand files.
+
+Loads data into target tables, creating or altering schema as needed.
+
+ETL Scheduler Engine (Python + Oracle)
+
+Central orchestration loop.
+
+Dispatches tasks sequentially inside flows.
+
+Task Execution
+
+Evaluates exec_condition SQL (returns PROCEED, CANCEL, WAIT, END).
+
+Runs PL/SQL commands or Linux commands.
+
+Handles task results and branches accordingly.
+
+Logging & Monitoring
+
+Writes into DMF_TASK_LOG, DMF_FLOW_LOG, and subcr_evnt_log.
+
+Captures status updates: Success, Failed, Cancelled, Ended, Waiting.
